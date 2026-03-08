@@ -34,7 +34,7 @@ h2{text-shadow:none;}
 .bg{
     position:fixed;
     inset:0;
-    background:url('../img/photo.png') center/cover no-repeat;
+    background:url('../img/photo.webp') center/cover no-repeat;
     z-index:0;
 }
 .dark{
@@ -96,7 +96,7 @@ button:hover{background:#111;}
     inset:0;
     z-index:0;
     overflow:hidden;
-    background:url('../img/photo.png') center/cover no-repeat;
+    background:url('../img/photo.webp') center/cover no-repeat;
 }
 .bg-video{
     position:fixed;
@@ -483,7 +483,7 @@ button:hover{background:#111;}
     content:"";
     position:absolute;
     inset:0;
-    background:url('../img/scroll.png') center/100% auto no-repeat;
+    background:url('../img/scroll.webp') center/100% auto no-repeat;
     filter:brightness(0.70);
     z-index:-1;
     pointer-events:none;
@@ -545,6 +545,8 @@ html{scroll-behavior:smooth;}
 
 /* MOBILE */
 @media (max-width:768px){
+.bg{background-image:url('../img/photo-mobile.webp');}
+.screen2-bg{background-image:url('../img/photo-mobile.webp');}
 .title{padding:18px 14px;height:100dvh;}
 .title h1{font-size:56px;line-height:1.05;margin:0 0 10px 0;transform:none;}
 .title p{font-size:34px;line-height:1.1;}
@@ -623,4 +625,5 @@ html{scroll-behavior:smooth;}
 .carousel-image{max-height:52vh;}
 .dress-recommendation{font-size:15px;}
 }
+
 
