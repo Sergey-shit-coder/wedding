@@ -495,6 +495,24 @@ async function submitSurvey(event) {
         guestComment: surveyForm.querySelector("#guestComment")?.value.trim() ?? ""
     };
 
+    const attendanceLabels = {
+        yes: "Да, буду",
+        no: "К сожалению, не смогу",
+        maybe: "Пока не уверен(а)"
+    };
+
+    const transferLabels = {
+        needed: "Да, нужен",
+        not_needed: "Не нужен",
+        unsure: "Пока не знаю"
+    };
+
+    const formattedPayload = {
+        ...payload,
+        attendance: attendanceLabels[payload.attendance] || payload.attendance,
+        transferNeed: transferLabels[payload.transferNeed] || payload.transferNeed
+    };
+
     if (!payload.guestName || !payload.attendance || !Number.isFinite(payload.guestCount) || payload.guestCount < 1) {
         setSurveyStatus("Заполните обязательные поля: имя, участие и количество гостей.", "error");
         return;
@@ -509,12 +527,12 @@ async function submitSurvey(event) {
     try {
         if (isGoogleScriptEndpoint(surveySubmitUrl)) {
             const formBody = new URLSearchParams({
-                guestName: payload.guestName,
-                attendance: payload.attendance,
-                guestCount: String(payload.guestCount),
-                transferNeed: payload.transferNeed,
-                foodNotes: payload.foodNotes,
-                guestComment: payload.guestComment,
+                guestName: formattedPayload.guestName,
+                attendance: formattedPayload.attendance,
+                guestCount: String(formattedPayload.guestCount),
+                transferNeed: formattedPayload.transferNeed,
+                foodNotes: formattedPayload.foodNotes,
+                guestComment: formattedPayload.guestComment,
                 submittedAt: new Date().toISOString()
             });
 
@@ -532,7 +550,7 @@ async function submitSurvey(event) {
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(payload)
+                body: JSON.stringify(formattedPayload)
             });
 
             const data = await response.json().catch(() => ({}));
