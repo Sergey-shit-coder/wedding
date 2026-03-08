@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Магическое приглашение</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Первый экран -->
+<div class="bg"></div>
+<div class="dark"></div>
+
+<div class="title">
+    <h1>Сергей и Анастасия</h1>
+    <p>18 июля</p>
+    <button id="magicBtn">Открыть приглашение</button>
+</div>
+
+<!-- Второй экран -->
+<div id="screen2" class="screen2">
+    <div class="screen2-bg">
+        <video class="bg-video" autoplay muted loop playsinline>
+            <source src="video/forest.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="screen2-content">
+        <div class="couple-title">
+            <div class="name">СЕРГЕЙ</div>
+            <div class="divider">И</div>
+            <div class="name">АНАСТАСИЯ</div>
+        </div>
+
+        <h2 class="invite-title">
+            ПРИГЛАШЕНИЕ НА ПИР<br>
+            ПО СЛУЧАЮ БРАКОСОЧЕТАНИЯ
+        </h2>
+
+        <div class="invite-block">
+            <img src="img/up.png" class="ornament" alt="Орнамент сверху">
+
+            <h2 class="invite-header">ДОРОГИЕ ДРУЗЬЯ И РОДНЯ</h2>
+
+            <p class="invite-text">
+                Приглашаем вас разделить нашу радость и присоединиться к нашему торжеству.
+            </p>
+
+            <div class="rune-date-box" id="runeDateBox">
+                <div id="runeDate" class="rune-date rune-glitch">ᚠᚢᚦᚨᚱᚲ</div>
+                <div id="runeHint" class="rune-hint">погадать на рунах</div>
+            </div>
+
+            <p class="invite-text">
+                Мы решили соединить свои пути не в тиши стен, а на природе — там, где слышен треск костра, смех друзей и голос земли.
+            </p>
+
+            <p class="invite-text">
+                Это будет не просто бракосочетание, а пир, как в старых сагах: еда, напитки, костёр, песни, разговоры и радость людей рядом.
+            </p>
+
+            <p class="invite-text">
+                Мы зовём вас быть свидетелями, разделить этот день, поднять рог (или стакан — не будем строгими) и провести вечер с атмосферой, которую хочется запомнить.
+            </p>
+
+            <img src="img/down.png" class="ornament" alt="Орнамент снизу">
+        </div>
+
+        <section class="meeting-block">
+            <h2 class="invite-header">Место встречи</h2>
+
+            <div class="meeting-photos">
+                <figure class="meeting-photo-card">
+                    <img src="img/solon1.png" alt="Ферма Солонь фото 1">
+                </figure>
+                <figure class="meeting-photo-card">
+                    <img src="img/solon2.png" alt="Ферма Солонь фото 2">
+                </figure>
+            </div>
+
+            <p class="meeting-address">Ферма «Солонь», 40 км от Екатеринбурга</p>
+
+            <a class="meeting-link" href="https://yandex.ru/maps/?rtext=~56.653185,61.167223&rtt=auto" target="_blank" rel="noopener noreferrer">Как добраться?</a>
+        </section>
+
+        <img src="img/коса.png" class="section-divider" alt="Разделитель">
+
+        <section class="important-block">
+            <h2 class="invite-header">Небольшие подсказки</h2>
+            <p class="important-text">Это праздник на природе.
+Здесь нет пола для каблуков и стен для эха.
+Возьмите:
+— Удобную одежду по погоде
+— Тёплую вещь на вечер
+— Обувь для земли, а не для паркета(скажи нет каблукам)
+— Хорошее настроение
+— Готовность быть частью этого дня
+
+Наряд в духе севера, льна, кожи,
+шерсти или просто спокойной
+простоты — приветствуется, но не обязателен.</p>
+        </section>
+
+        <section class="gifts-block">
+            <h2 class="invite-header">Пожелание по подаркам</h2>
+            <p class="gifts-text">В дар возьмем пушниной:
+     Хошь - куницей, хошь - бобром,
+     А не хошь - возьмём монетой,
+     Златом али серебром!
+Просьба не дарить цветы, т.к. тематика вечеринки не предполагает их наличие</p>
+        </section>
+
+        <section class="dresscode-block">
+            <img src="img/dress/pallete.png" class="dress-palette-image" alt="Палитра цветов дресс-кода">
+            <div class="couple-buttons dress-buttons">
+                <div id="groomBtn" class="person-btn">ᚦ  Сын Севера  ᚦ</div>
+                <div id="brideBtn" class="person-btn">ᛉ  Дочь Севера  ᛉ</div>
+            </div>
+
+            <div id="groomCarousel" class="carousel dress-carousel">
+                <button class="prev" aria-label="Предыдущее фото">&#10094;</button>
+                <div class="carousel-view">
+                    <img class="carousel-image" alt="Мужской образ">
+                </div>
+                <p class="carousel-open-hint">Нажмите на фото, чтобы открыть полностью</p>
+                <button class="next" aria-label="Следующее фото">&#10095;</button>
+                <p class="dress-recommendation">Образы «Сын Севера»: плотные натуральные ткани, многослойность, спокойные оттенки, удобная обувь для природы, фактура кожи и льна.</p>
+            </div>
+
+            <div id="brideCarousel" class="carousel dress-carousel">
+                <button class="prev" aria-label="Предыдущее фото">&#10094;</button>
+                <div class="carousel-view">
+                    <img class="carousel-image" alt="Женский образ">
+                </div>
+                <p class="carousel-open-hint">Нажмите на фото, чтобы открыть полностью</p>
+                <button class="next" aria-label="Следующее фото">&#10095;</button>
+                <p class="dress-recommendation">Образы «Дочь Севера»: лён, шерсть, мягкие природные цвета, свободные силуэты, накидки и уютные детали, комфортная обувь вместо каблуков.</p>
+            </div>
+        </section>
+        <section class="survey-block" id="surveyBlock">
+            <h2 class="invite-header">Заполните таблицу вопросов, которые помогут нам в организации</h2>
+            <p class="survey-intro">Это займёт пару минут и сильно поможет нам всё организовать.</p>
+
+            <form id="surveyForm" class="survey-form" novalidate>
+                <div class="survey-field full-width">
+                    <label for="guestName" class="survey-label">Ваше имя и фамилия</label>
+                    <input id="guestName" name="guestName" class="survey-input" type="text" required maxlength="120" placeholder="Например: Иван Петров">
+                </div>
+
+                <div class="survey-field">
+                    <label for="attendance" class="survey-label">Вы будете на празднике?</label>
+                    <select id="attendance" name="attendance" class="survey-select" required>
+                        <option value="">Выберите вариант</option>
+                        <option value="yes">Да, буду</option>
+                        <option value="no">К сожалению, не смогу</option>
+                        <option value="maybe">Пока не уверен(а)</option>
+                    </select>
+                </div>
+
+                <div class="survey-field">
+                    <label for="guestCount" class="survey-label">Сколько вас будет?</label>
+                    <input id="guestCount" name="guestCount" class="survey-input" type="number" min="1" max="10" value="1" required>
+                </div>
+
+                <div class="survey-field">
+                    <label for="transferNeed" class="survey-label">Нужен ли трансфер?</label>
+                    <select id="transferNeed" name="transferNeed" class="survey-select">
+                        <option value="not_needed">Не нужен</option>
+                        <option value="needed">Да, нужен</option>
+                        <option value="unsure">Пока не знаю</option>
+                    </select>
+                </div>
+
+                <div class="survey-field">
+                    <label for="foodNotes" class="survey-label">Пожелания по еде (если есть)</label>
+                    <input id="foodNotes" name="foodNotes" class="survey-input" type="text" maxlength="200" placeholder="Например: без мяса / аллергия на орехи">
+                </div>
+
+                <div class="survey-field full-width">
+                    <label for="guestComment" class="survey-label">Комментарий</label>
+                    <textarea id="guestComment" name="guestComment" class="survey-textarea" rows="4" maxlength="1000" placeholder="Любая важная информация для нас"></textarea>
+                </div>
+
+                <div class="survey-field full-width survey-actions">
+                    <button type="submit" class="survey-submit">Отправить ответы</button>
+                    <p id="surveyStatus" class="survey-status" role="status" aria-live="polite"></p>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
+
+<div id="imageLightbox" class="image-lightbox" aria-hidden="true">
+    <button id="lightboxClose" class="lightbox-close" aria-label="Закрыть">×</button>
+    <img id="lightboxImage" src="" alt="">
+</div>
+
+<!-- Музыка -->
+<audio id="bgMusic" loop>
+    <source src="audio/bgMusic.mp3" type="audio/mpeg">
+</audio>
+
+<script src="js/config.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
