@@ -73,11 +73,11 @@ function applyBackgroundVideoSource() {
 }
 
 const manImages = [
-    "img/dress/man/1.jpeg",
-    ...Array.from({ length: 15 }, (_, i) => `img/dress/man/${i + 2}.jpg`)
+    "img/dress/man/1.webp",
+    ...Array.from({ length: 15 }, (_, i) => `img/dress/man/${i + 2}.webp`)
 ];
 
-const womanImages = Array.from({ length: 17 }, (_, i) => `img/dress/woman/${i + 1}.jpg`);
+const womanImages = Array.from({ length: 17 }, (_, i) => `img/dress/woman/${i + 1}.webp`);
 
 function randomRune() {
     return runes[Math.floor(Math.random() * runes.length)];
@@ -653,6 +653,8 @@ async function submitSurvey(event) {
 if (surveyForm) {
     surveyForm.addEventListener("submit", submitSurvey);
 }
+
+
 
 
 
