@@ -16,6 +16,10 @@ const screen2 = document.getElementById("screen2");
 const titleBlock = document.querySelector(".title");
 const bg = document.querySelector(".bg");
 const dark = document.querySelector(".dark");
+const bgVideo = document.getElementById("bgVideo");
+
+const mobileMediaQuery = window.matchMedia("(max-width: 768px)");
+const connectionInfo = navigator.connection || navigator.mozConnection || navigator.webkitConnection || null;
 
 const runeDateBox = document.getElementById("runeDateBox");
 const runeDate = document.getElementById("runeDate");
@@ -37,6 +41,36 @@ let runeRainTimer = null;
 let glitchTimer = null;
 let secondScreenVisible = false;
 let runeDateRevealed = false;
+
+function isLiteAnimationMode() {
+    return mobileMediaQuery.matches || Boolean(connectionInfo && connectionInfo.saveData);
+}
+
+function getBackgroundVideoSrc() {
+    if (!bgVideo) {
+        return "";
+    }
+
+    if (mobileMediaQuery.matches) {
+        return bgVideo.dataset.srcMobile || bgVideo.dataset.srcDesktop || "";
+    }
+
+    return bgVideo.dataset.srcDesktop || bgVideo.dataset.srcMobile || "";
+}
+
+function applyBackgroundVideoSource() {
+    if (!bgVideo) {
+        return;
+    }
+
+    const nextSrc = getBackgroundVideoSrc();
+    if (!nextSrc || bgVideo.getAttribute("src") === nextSrc) {
+        return;
+    }
+
+    bgVideo.setAttribute("src", nextSrc);
+    bgVideo.load();
+}
 
 const manImages = [
     "img/dress/man/1.jpeg",
@@ -113,13 +147,16 @@ function burstRunes(originX, originY, options = {}) {
 
 function animatePortalRune(originX, originY) {
     return new Promise((resolve) => {
+        const liteMode = isLiteAnimationMode();
         const portal = document.createElement("span");
         portal.className = "rune-particle";
         portal.textContent = "\u16B1";
         portal.style.left = `${originX}px`;
         portal.style.top = `${originY}px`;
-        portal.style.fontSize = "136px";
-        portal.style.textShadow = "0 0 30px #d4af37, 0 0 70px #d4af37, 0 0 110px #d4af37";
+        portal.style.fontSize = liteMode ? "108px" : "136px";
+        portal.style.textShadow = liteMode
+            ? "0 0 20px #d4af37, 0 0 46px #d4af37"
+            : "0 0 30px #d4af37, 0 0 70px #d4af37, 0 0 110px #d4af37";
         portal.style.transform = "translate(-50%, -50%)";
         portal.style.opacity = "0";
         document.body.appendChild(portal);
@@ -129,25 +166,29 @@ function animatePortalRune(originX, originY) {
         const dx = targetX - originX;
         const dy = targetY - originY;
 
+        const scaleMid = liteMode ? 1.55 : 1.9;
+        const scaleNearEnd = liteMode ? 2.8 : 3.6;
+        const scaleEnd = liteMode ? 7.2 : 10.5;
+
         const animation = portal.animate(
             [
                 { transform: "translate(-50%, -50%) translate(0px, 0px) scale(0.2) rotate(0deg)", opacity: 0 },
                 {
-                    transform: `translate(-50%, -50%) translate(${dx * 0.45}px, ${dy * 0.45}px) scale(1.9) rotate(260deg)`,
+                    transform: `translate(-50%, -50%) translate(${dx * 0.45}px, ${dy * 0.45}px) scale(${scaleMid}) rotate(260deg)`,
                     opacity: 1,
                     offset: 0.12
                 },
                 {
-                    transform: `translate(-50%, -50%) translate(${dx}px, ${dy}px) scale(3.6) rotate(500deg)`,
+                    transform: `translate(-50%, -50%) translate(${dx}px, ${dy}px) scale(${scaleNearEnd}) rotate(500deg)`,
                     opacity: 1,
                     offset: 0.62
                 },
                 {
-                    transform: `translate(-50%, -50%) translate(${dx}px, ${dy}px) scale(10.5) rotate(760deg)`,
+                    transform: `translate(-50%, -50%) translate(${dx}px, ${dy}px) scale(${scaleEnd}) rotate(760deg)`,
                     opacity: 0
                 }
             ],
-            { duration: 1400, easing: "cubic-bezier(0.2, 0.85, 0.2, 1)" }
+            { duration: liteMode ? 1100 : 1400, easing: "cubic-bezier(0.2, 0.85, 0.2, 1)" }
         );
 
         animation.onfinish = () => {
@@ -168,6 +209,8 @@ function showSecondScreen() {
     if (bg) bg.style.display = "none";
     if (dark) dark.style.display = "none";
 
+    applyBackgroundVideoSource();
+
     screen2.style.display = "flex";
     document.body.style.overflow = "auto";
 
@@ -184,13 +227,15 @@ if (button) {
         const centerX = rect.left + rect.width / 2;
         const centerY = rect.top + rect.height / 2;
 
+        const liteMode = isLiteAnimationMode();
+
         burstRunes(centerX, centerY, {
-            count: 130,
-            minRadius: 90,
-            maxRadius: 580,
-            duration: 1250,
-            sizeMin: 18,
-            sizeMax: 72
+            count: liteMode ? 78 : 130,
+            minRadius: liteMode ? 72 : 90,
+            maxRadius: liteMode ? 460 : 580,
+            duration: liteMode ? 980 : 1250,
+            sizeMin: liteMode ? 15 : 18,
+            sizeMax: liteMode ? 54 : 72
         });
 
         if (music && music.paused) {
@@ -208,10 +253,11 @@ function createFallingRune() {
     rune.textContent = randomRune();
     rune.style.left = `${Math.random() * window.innerWidth}px`;
     rune.style.top = "-20px";
-    rune.style.fontSize = `${12 + Math.random() * 20}px`;
+    const liteMode = isLiteAnimationMode();
+    rune.style.fontSize = `${(liteMode ? 10 : 12) + Math.random() * (liteMode ? 13 : 20)}px`;
     document.body.appendChild(rune);
 
-    const speed = 2000 + Math.random() * 3000;
+    const speed = (liteMode ? 2600 : 2000) + Math.random() * (liteMode ? 2200 : 3000);
     rune.animate(
         [
             { transform: "translateY(0px)" },
@@ -227,7 +273,7 @@ function startRuneRain() {
     if (runeRainTimer !== null) {
         return;
     }
-    runeRainTimer = window.setInterval(createFallingRune, 200);
+    runeRainTimer = window.setInterval(createFallingRune, isLiteAnimationMode() ? 340 : 200);
 }
 
 function startRuneGlitch() {
@@ -266,13 +312,15 @@ function revealRuneDate() {
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
 
+    const liteMode = isLiteAnimationMode();
+
     burstRunes(centerX, centerY, {
-        count: 150,
-        minRadius: 130,
-        maxRadius: 650,
-        duration: 1300,
-        sizeMin: 22,
-        sizeMax: 80
+        count: liteMode ? 96 : 150,
+        minRadius: liteMode ? 100 : 130,
+        maxRadius: liteMode ? 520 : 650,
+        duration: liteMode ? 1000 : 1300,
+        sizeMin: liteMode ? 18 : 22,
+        sizeMax: liteMode ? 62 : 80
     });
 
     runeDate.classList.remove("rune-glitch");
@@ -384,10 +432,29 @@ function setupDressCarousel(container, images, altBase) {
     };
 }
 
-const dressControllers = {
-    groom: setupDressCarousel(groomCarousel, manImages, "Сын Севера"),
-    bride: setupDressCarousel(brideCarousel, womanImages, "Дочь Севера")
+const dressConfig = {
+    groom: { container: groomCarousel, images: manImages, altBase: "Сын Севера" },
+    bride: { container: brideCarousel, images: womanImages, altBase: "Дочь Севера" }
 };
+
+const dressControllers = {
+    groom: null,
+    bride: null
+};
+
+function ensureDressController(type) {
+    if (dressControllers[type]) {
+        return dressControllers[type];
+    }
+
+    const config = dressConfig[type];
+    if (!config) {
+        return null;
+    }
+
+    dressControllers[type] = setupDressCarousel(config.container, config.images, config.altBase);
+    return dressControllers[type];
+}
 
 function deactivateDressButtons() {
     if (groomBtn) groomBtn.classList.remove("active");
@@ -403,7 +470,7 @@ function closeDressCarousels() {
 }
 
 function toggleDressCarousel(type) {
-    const target = dressControllers[type];
+    const target = ensureDressController(type);
     if (!target) {
         return;
     }
@@ -433,6 +500,14 @@ if (groomBtn) {
 
 if (brideBtn) {
     brideBtn.addEventListener("click", () => toggleDressCarousel("bride"));
+}
+
+applyBackgroundVideoSource();
+
+if (mobileMediaQuery.addEventListener) {
+    mobileMediaQuery.addEventListener("change", applyBackgroundVideoSource);
+} else if (mobileMediaQuery.addListener) {
+    mobileMediaQuery.addListener(applyBackgroundVideoSource);
 }
 
 startRuneRain();
@@ -578,3 +653,11 @@ async function submitSurvey(event) {
 if (surveyForm) {
     surveyForm.addEventListener("submit", submitSurvey);
 }
+
+
+
+
+
+
+
+
