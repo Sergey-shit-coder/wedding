@@ -21,9 +21,7 @@
 <!-- Второй экран -->
 <div id="screen2" class="screen2">
     <div class="screen2-bg">
-        <video class="bg-video" autoplay muted loop playsinline>
-            <source src="video/forest.mp4" type="video/mp4">
-        </video>
+                <video id="bgVideo" class="bg-video" autoplay muted loop playsinline preload="metadata" poster="img/photo.png" data-src-desktop="video/forest.mp4" data-src-mobile="video/forest-mobile.mp4"></video>
     </div>
 
     <div class="screen2-content">
@@ -39,7 +37,7 @@
         </h2>
 
         <div class="invite-block">
-            <img src="img/up.png" class="ornament" alt="Орнамент сверху">
+            <img src="img/up.png" class="ornament" alt="Орнамент сверху" loading="lazy" decoding="async">
 
             <h2 class="invite-header">ДОРОГИЕ ДРУЗЬЯ И РОДНЯ</h2>
 
@@ -64,7 +62,7 @@
                 Мы зовём вас быть свидетелями, разделить этот день, поднять рог (или стакан — не будем строгими) и провести вечер с атмосферой, которую хочется запомнить.
             </p>
 
-            <img src="img/down.png" class="ornament" alt="Орнамент снизу">
+            <img src="img/down.png" class="ornament" alt="Орнамент снизу" loading="lazy" decoding="async">
         </div>
 
         <section class="meeting-block">
@@ -72,10 +70,10 @@
 
             <div class="meeting-photos">
                 <figure class="meeting-photo-card">
-                    <img src="img/solon1.png" alt="Ферма Солонь фото 1">
+                    <img src="img/solon1.png" alt="Ферма Солонь фото 1" loading="lazy" decoding="async">
                 </figure>
                 <figure class="meeting-photo-card">
-                    <img src="img/solon2.png" alt="Ферма Солонь фото 2">
+                    <img src="img/solon2.png" alt="Ферма Солонь фото 2" loading="lazy" decoding="async">
                 </figure>
             </div>
 
@@ -84,7 +82,7 @@
             <a class="meeting-link" href="https://yandex.ru/maps/?rtext=~56.653185,61.167223&rtt=auto" target="_blank" rel="noopener noreferrer">Как добраться?</a>
         </section>
 
-        <img src="img/коса.png" class="section-divider" alt="Разделитель">
+        <img src="img/коса.png" class="section-divider" alt="Разделитель" loading="lazy" decoding="async">
 
         <section class="important-block">
             <h2 class="invite-header">Небольшие подсказки</h2>
@@ -112,7 +110,7 @@
         </section>
 
         <section class="dresscode-block">
-            <img src="img/dress/pallete.png" class="dress-palette-image" alt="Палитра цветов дресс-кода">
+            <img src="img/dress/pallete.png" class="dress-palette-image" alt="Палитра цветов дресс-кода" loading="lazy" decoding="async">
             <div class="couple-buttons dress-buttons">
                 <div id="groomBtn" class="person-btn">ᚦ  Сын Севера  ᚦ</div>
                 <div id="brideBtn" class="person-btn">ᛉ  Дочь Севера  ᛉ</div>
@@ -121,7 +119,7 @@
             <div id="groomCarousel" class="carousel dress-carousel">
                 <button class="prev" aria-label="Предыдущее фото">&#10094;</button>
                 <div class="carousel-view">
-                    <img class="carousel-image" alt="Мужской образ">
+                    <img class="carousel-image" alt="Мужской образ" loading="lazy" decoding="async">
                 </div>
                 <p class="carousel-open-hint">Нажмите на фото, чтобы открыть полностью</p>
                 <button class="next" aria-label="Следующее фото">&#10095;</button>
@@ -131,7 +129,7 @@
             <div id="brideCarousel" class="carousel dress-carousel">
                 <button class="prev" aria-label="Предыдущее фото">&#10094;</button>
                 <div class="carousel-view">
-                    <img class="carousel-image" alt="Женский образ">
+                    <img class="carousel-image" alt="Женский образ" loading="lazy" decoding="async">
                 </div>
                 <p class="carousel-open-hint">Нажмите на фото, чтобы открыть полностью</p>
                 <button class="next" aria-label="Следующее фото">&#10095;</button>
@@ -205,6 +203,7 @@
 <script src="js/script.js"></script>
 </body>
 </html>
+
 
 
 
