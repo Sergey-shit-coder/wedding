@@ -96,6 +96,7 @@ button:hover{background:#111;}
     inset:0;
     z-index:0;
     overflow:hidden;
+    background:url('../img/photo.png') center/cover no-repeat;
 }
 .bg-video{
     position:fixed;
@@ -537,63 +538,89 @@ body.lightbox-open{overflow:hidden !important;}
 @keyframes appearFog{0%{opacity:0;transform:translateY(60px);filter:blur(12px);}100%{opacity:1;transform:translateY(0);filter:blur(0);}}
 @keyframes runeGlitch{0%{transform:translate(0,0);}25%{transform:translate(-2px,2px);}50%{transform:translate(2px,-1px);}75%{transform:translate(-1px,-2px);}100%{transform:translate(0,0);}}
 @keyframes dateReveal{0%{transform:scale(0.6);opacity:0;}100%{transform:scale(1);opacity:1;}}
+@keyframes appearFogLite{0%{opacity:0;transform:translateY(36px);filter:blur(4px);}100%{opacity:1;transform:translateY(0);filter:blur(0);}}
 
 html,body{height:100%;overflow-x:hidden;}
 html{scroll-behavior:smooth;}
 
 /* MOBILE */
 @media (max-width:768px){
-.couple-title .name{font-size:60px;}
-.couple-title .divider{font-size:36px;}
-.invite-title{font-size:40px;}
-.invite-text{font-size:18px;}
-.invite-date{font-size:40px;}
-.rune-date{font-size:64px;letter-spacing:6px;}
-.rune-hint{
-    font-family:'Runic', serif;
-    font-size:66px;
-    line-height:1.1;
-    color:#d4af37;
-    margin-top:14px;
-    text-shadow:0 0 8px rgba(212,175,55,0.8);
-    transition:opacity 0.25s ease;
-}
-.meeting-photos{grid-template-columns:1fr;}
-.meeting-address{font-size:20px;}
-.meeting-link{font-size:26px;padding:12px 24px;}
-.section-divider{width:200px;max-width:68%;}
-.important-block{padding:18px 16px;}
-.important-label{font-size:20px;}
-.important-text{font-size:21px;line-height:1.5;}
-.gifts-block{padding:18px 16px;}
-.gifts-text{font-size:21px;line-height:1.5;}
-.survey-block{padding:18px 16px;}
-.survey-intro{font-size:19px;}
-.survey-form{grid-template-columns:1fr;gap:12px;}
-.survey-block .invite-header{font-size:26px;line-height:1.25;letter-spacing:0.5px;}
+.title{padding:18px 14px;height:100dvh;}
+.title h1{font-size:56px;line-height:1.05;margin:0 0 10px 0;transform:none;}
+.title p{font-size:34px;line-height:1.1;}
+#magicBtn{padding:14px 28px;font-size:18px;margin-top:20px;}
+.screen2{padding:90px 14px 44px;}
+.screen2-content{max-width:100%;}
+.couple-title{margin-bottom:26px;animation:appearFogLite 1.5s ease-out forwards;}
+.couple-title .name{font-size:58px;letter-spacing:3px;margin:8px 0;}
+.couple-title .divider{font-size:34px;letter-spacing:6px;}
+.invite-title{font-size:31px;line-height:1.15;letter-spacing:1.5px;margin:18px 0 24px;}
+.invite-block{margin:30px auto;padding:8px;}
+.invite-header{font-size:34px;margin-bottom:14px;}
+.invite-text{font-size:19px;line-height:1.45;margin:12px 0;}
+.ornament{width:126px;margin:20px auto;}
+.rune-date-box{margin:28px 0;}
+.rune-date{font-size:60px;letter-spacing:4px;line-height:1.02;}
+.rune-hint{font-size:42px;line-height:1.05;margin-top:10px;}
+.rune-time{margin-top:12px;}
+.meeting-block{margin:38px auto 24px;padding:10px;}
+.meeting-photos{grid-template-columns:1fr;gap:14px;margin:14px 0 18px;}
+.meeting-photo-card{padding:8px;}
+.meeting-address{font-size:20px;line-height:1.32;}
+.meeting-link{font-size:25px;padding:10px 20px;margin-top:14px;}
+.section-divider{width:190px;max-width:60%;margin:28px auto;}
+.important-block,.gifts-block,.survey-block{padding:16px 14px;margin-bottom:28px;}
+.important-text,.gifts-text{font-size:21px;line-height:1.42;}
+.survey-block .invite-header{font-size:27px;line-height:1.2;letter-spacing:0.4px;}
+.survey-intro{font-size:18px;line-height:1.35;}
 .survey-label{font-size:18px;}
 .survey-input,
 .survey-select,
-.survey-textarea{font-size:18px;padding:10px 12px;}
-.survey-submit{font-size:24px;padding:12px 24px;}
-.survey-status{font-size:18px;}
-
-
-.dress-buttons{gap:12px;}
-.dress-buttons .person-btn{width:44vw;min-width:44vw;padding:0 10px;font-size:20px;}
-.dress-palette-image{max-width:92%;margin:8px auto 14px;}
-
-
-.carousel .prev,.carousel .next{font-size:26px;padding:8px 12px;}
-.carousel-image{max-height:62vh;}
-.carousel-open-hint{font-size:14px;margin:0 0 8px;}
-.dress-recommendation{font-size:18px;padding:0 14px 16px;}
-.lightbox-close{font-size:34px;top:10px;right:12px;}
+.survey-textarea{font-size:17px;padding:10px 12px;}
+.survey-submit{font-size:22px;padding:10px 18px;}
+.survey-status{font-size:17px;}
+.dress-palette-image{max-width:86%;margin:4px auto 12px;}
+.dress-buttons{gap:8px;flex-wrap:nowrap;}
+.dress-buttons .person-btn{width:calc(50% - 5px);min-width:0;padding:0 8px;font-size:17px;letter-spacing:0;}
+.carousel.active{margin:14px auto 8px;}
+.carousel .prev,.carousel .next{font-size:22px;padding:6px 10px;}
+.carousel .prev{left:8px;}
+.carousel .next{right:8px;}
+.carousel-view{padding:10px;}
+.carousel-image{max-height:58vh;}
+.carousel-open-hint{font-size:13px;margin:0 0 6px;}
+.dress-recommendation{font-size:17px;line-height:1.35;padding:0 12px 12px;}
+.lightbox-close{font-size:30px;top:8px;right:8px;padding:2px 10px;}
 }
 
-
-
-
-
-
+@media (max-width:480px){
+.title h1{font-size:42px;}
+.title p{font-size:27px;}
+#magicBtn{font-size:16px;padding:12px 20px;}
+.screen2{padding:78px 10px 36px;}
+.couple-title .name{font-size:46px;letter-spacing:2px;}
+.couple-title .divider{font-size:28px;letter-spacing:4px;}
+.invite-title{font-size:24px;letter-spacing:1px;}
+.invite-header{font-size:28px;}
+.invite-text{font-size:17px;line-height:1.38;}
+.rune-date{font-size:48px;letter-spacing:2px;}
+.rune-hint{font-size:34px;}
+.rune-time{margin-top:10px;}
+.meeting-address{font-size:18px;}
+.meeting-link{font-size:20px;padding:9px 14px;}
+.important-text,.gifts-text{font-size:18px;}
+.survey-block .invite-header{font-size:22px;}
+.survey-intro{font-size:16px;}
+.survey-label{font-size:16px;}
+.survey-input,
+.survey-select,
+.survey-textarea{font-size:16px;}
+.survey-submit{font-size:19px;padding:10px 16px;}
+.dress-palette-image{max-width:100%;}
+.dress-buttons{gap:6px;}
+.dress-buttons .person-btn{width:calc(50% - 4px);min-width:0;font-size:14px;padding:0 4px;}
+.carousel .prev,.carousel .next{font-size:18px;padding:5px 8px;}
+.carousel-image{max-height:52vh;}
+.dress-recommendation{font-size:15px;}
+}
 
