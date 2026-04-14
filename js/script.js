@@ -24,6 +24,7 @@ const connectionInfo = navigator.connection || navigator.mozConnection || naviga
 const runeDateBox = document.getElementById("runeDateBox");
 const runeDate = document.getElementById("runeDate");
 const runeHint = document.getElementById("runeHint");
+const runeHintTop = document.getElementById("runeHintTop");
 
 const groomBtn = document.getElementById("groomBtn");
 const brideBtn = document.getElementById("brideBtn");
@@ -327,11 +328,18 @@ function revealRuneDate() {
     runeDate.style.opacity = "0";
     runeDateBox.style.pointerEvents = "none";
 
+    if (runeHintTop) {
+        runeHintTop.style.opacity = "0";
+    }
+
     if (runeHint) {
         runeHint.style.opacity = "0";
     }
 
     window.setTimeout(() => {
+        if (runeHintTop) {
+            runeHintTop.style.display = "none";
+        }
         if (runeHint) {
             runeHint.style.display = "none";
         }
@@ -653,6 +661,8 @@ async function submitSurvey(event) {
 if (surveyForm) {
     surveyForm.addEventListener("submit", submitSurvey);
 }
+
+
 
 
 
