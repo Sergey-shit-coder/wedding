@@ -284,6 +284,10 @@ button:hover{background:#111;}
     text-shadow:0 0 8px rgba(212,175,55,0.8);
     transition:opacity 0.25s ease;
 }
+.rune-hint-top{
+    margin-top:0;
+    margin-bottom:12px;
+}
 .rune-glitch{animation:runeGlitch 0.15s steps(1, end) infinite;}
 .rune-date.revealed{animation:dateReveal 0.6s ease-out;letter-spacing:2px;}
 .rune-date-main{display:block;}
@@ -451,6 +455,16 @@ button:hover{background:#111;}
 }
 
 
+.dress-buttons-hint{
+    margin:0 0 12px;
+    font-family:'Runic', serif;
+    font-size:42px;
+    line-height:1.1;
+    color:#d4af37;
+    text-align:center;
+    text-shadow:0 0 8px rgba(212,175,55,0.8);
+}
+
 .dress-buttons{
     gap:28px;
     flex-wrap:nowrap;
@@ -564,6 +578,7 @@ html{scroll-behavior:smooth;}
 .rune-date-box{margin:28px 0;}
 .rune-date{font-size:60px;letter-spacing:4px;line-height:1.02;}
 .rune-hint{font-size:42px;line-height:1.05;margin-top:10px;}
+.rune-hint-top{margin-top:0;margin-bottom:8px;}
 .rune-time{margin-top:12px;}
 .meeting-block{margin:38px auto 24px;padding:10px;}
 .meeting-photos{grid-template-columns:1fr;gap:14px;margin:14px 0 18px;}
@@ -582,6 +597,7 @@ html{scroll-behavior:smooth;}
 .survey-submit{font-size:22px;padding:10px 18px;}
 .survey-status{font-size:17px;}
 .dress-palette-image{max-width:86%;margin:4px auto 12px;}
+.dress-buttons-hint{font-size:32px;margin:0 0 8px;}
 .dress-buttons{gap:8px;flex-wrap:nowrap;}
 .dress-buttons .person-btn{width:calc(50% - 5px);min-width:0;padding:0 8px;font-size:17px;letter-spacing:0;}
 .carousel.active{margin:14px auto 8px;}
@@ -607,6 +623,7 @@ html{scroll-behavior:smooth;}
 .invite-text{font-size:17px;line-height:1.38;}
 .rune-date{font-size:48px;letter-spacing:2px;}
 .rune-hint{font-size:34px;}
+.rune-hint-top{margin-top:0;margin-bottom:7px;}
 .rune-time{margin-top:10px;}
 .meeting-address{font-size:18px;}
 .meeting-link{font-size:20px;padding:9px 14px;}
@@ -619,11 +636,22 @@ html{scroll-behavior:smooth;}
 .survey-textarea{font-size:16px;}
 .survey-submit{font-size:19px;padding:10px 16px;}
 .dress-palette-image{max-width:100%;}
+.dress-buttons-hint{font-size:26px;margin:0 0 6px;}
 .dress-buttons{gap:6px;}
 .dress-buttons .person-btn{width:calc(50% - 4px);min-width:0;font-size:14px;padding:0 4px;}
 .carousel .prev,.carousel .next{font-size:18px;padding:5px 8px;}
 .carousel-image{max-height:52vh;}
 .dress-recommendation{font-size:15px;}
 }
+
+
+
+
+
+
+
+
+
+
 
 
